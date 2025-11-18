@@ -1,0 +1,92 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Paciente {
+  id String @id @default(cuid())
+  nombre String
+  apellido String
+  fecha_nacimiento DateTime @db.Date
+  direccion String?
+  telefono String @unique
+  correo String @unique
+  citasMedicas CitaMedica[]
+  expedientesMedicos ExpedienteMedico[]
+}
+
+model ProfesionalSalud {
+  id String @id @default(cuid())
+  nombre String
+  apellido String
+  especialidad String
+  telefono String @unique
+  correo String @unique
+  citasMedicas CitaMedica[]
+}
+
+model CitaMedica {
+  id String @id @default(cuid())
+  fecha DateTime @db.Date
+  hora String
+  motivo String?
+  paciente Paciente @relation(fields: [id_paciente], references: [id])
+  id_paciente String
+  profesionalSalud ProfesionalSalud @relation(fields: [id_profesionalSalud], references: [id])
+  id_profesionalSalud String
+}
+
+model ExpedienteMedico {
+  id String @id @default(cuid())
+  fecha_creacion DateTime @default(now())
+  diagnostico String
+  id_paciente String
+  paciente Paciente @relation(fields: [id_paciente], references: [id])
+  tratamientos Tratamiento[]
+}
+
+model Tratamiento {
+  id String @id @default(cuid())
+  tipo_tratamiento String
+  fecha_inicio DateTime
+  fecha_fin DateTime
+  id_expediente String
+  expedienteMedico ExpedienteMedico @relation(fields: [id_expediente], references: [id])
+  evaluaciones EvaluacionTratamiento[]
+}
+
+model EvaluacionTratamiento {
+  id String @id @default(cuid())
+  fecha_evaluacion DateTime
+  efectividad String
+  efectos_secundarios String
+  id_tratamiento String
+  tratamiento Tratamiento @relation(fields: [id_tratamiento], references: [id])
+}
+
+model Usuario {
+  id String @id @default(cuid())
+  nombre String
+  apellido String
+  correo String @unique
+  contraseña String
+  telefono String @unique
+  role UsuarioRole
+}
+
+enum UsuarioRole {
+  ENFERMERA  
+  MEDICO
+  RECEPCIONISTA
+  ADMINISTRADOR
+}
