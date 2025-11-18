@@ -9,6 +9,8 @@ const expedienteMedicoRouter = require('./src/routes/expedientemedico-router');
 const tratamientoRouter = require('./src/routes/tratamiento-router');
 const { globalErrorHandler } = require('./src/utils/error-handling');
 
+const PORT = process.env.PORT || 3000;
+
 dotenv.config();
 app.use(express.json());
 
@@ -25,6 +27,6 @@ app.use('/api/tratamiento', tratamientoRouter);
 app.use(errors());
 app.use(globalErrorHandler);
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Servidor corriendo en http://localhost:${process.env.PORT || 3000}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
