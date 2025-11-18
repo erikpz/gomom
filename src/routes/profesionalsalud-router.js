@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const profesionalSaludController = require('../controller/profesionalSalud-controller');
+const profesionalSaludController = require('../controller/profesionalsalud-controller');
 const { validateProfesionalSaludCreation } = require('../middlewares/profesionalsalud-middleware');
 
 router.get('/search', profesionalSaludController.getProfesionalSaludByNombre);
