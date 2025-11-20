@@ -8,6 +8,8 @@ const citaMedicaRouter = require('./src/routes/citamedica-router');
 const expedienteMedicoRouter = require('./src/routes/expedientemedico-router');
 const tratamientoRouter = require('./src/routes/tratamiento-router');
 const evaluacionRouter = require('./src/routes/evaluacion-router');
+const usuarioRouter = require('./src/routes/usuario-router');
+const authRouter = require('./src/routes/auth-router');
 const { globalErrorHandler } = require('./src/utils/error-handling');
 
 const PORT = process.env.PORT || 3009;
@@ -25,6 +27,8 @@ app.use('/api/cita-medica', citaMedicaRouter);
 app.use('/api/expediente-medico', expedienteMedicoRouter);
 app.use('/api/tratamiento', tratamientoRouter);
 app.use('/api/evaluacion', evaluacionRouter);
+app.use('/api/usuario', usuarioRouter);
+app.use('/api/auth', authRouter);
 
 app.use(errors());
 app.use(globalErrorHandler);

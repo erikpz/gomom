@@ -80,8 +80,8 @@ model Usuario {
   nombre String
   apellido String
   correo String @unique
-  contraseña String
-  telefono String @unique
+  contrasena String
+  telefono String? @unique
   role UsuarioRole
 }
 
