@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const profesionalSaludController = require('../controller/profesionalsalud-controller');
 const { validateProfesionalSaludCreation } = require('../middlewares/profesionalsalud-middleware');
+const { verifyAuthMiddleware } = require('../middlewares/auth-middleware');
+
+router.use(verifyAuthMiddleware);
 
 router.get('/search', profesionalSaludController.getProfesionalSaludByNombre);
 router.get('/:id', profesionalSaludController.getProfesionalSaludById);
