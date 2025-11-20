@@ -35,6 +35,13 @@ const pacienteService = {
                         { nombre: { contains: nombre, mode: 'insensitive' } },
                         { apellido: { contains: apellido, mode: 'insensitive' } },
                     ]
+                },
+                include: {
+                    citasMedicas: {
+                        include: {
+                            profesionalSalud: true
+                        }
+                    }
                 }
             });
             

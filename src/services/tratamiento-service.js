@@ -1,5 +1,4 @@
 const prisma = require('../config/prisma');
-const pacienteService = require('./paciente-service');
 const { prismaErrorHandler } = require('../utils/error-handling');
 
 const tratamientoService = {

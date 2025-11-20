@@ -7,9 +7,10 @@ const profesionalSaludRouter = require('./src/routes/profesionalsalud-router');
 const citaMedicaRouter = require('./src/routes/citamedica-router');
 const expedienteMedicoRouter = require('./src/routes/expedientemedico-router');
 const tratamientoRouter = require('./src/routes/tratamiento-router');
+const evaluacionRouter = require('./src/routes/evaluacion-router');
 const { globalErrorHandler } = require('./src/utils/error-handling');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3009;
 
 dotenv.config();
 app.use(express.json());
@@ -23,6 +24,7 @@ app.use('/api/profesional-salud', profesionalSaludRouter);
 app.use('/api/cita-medica', citaMedicaRouter);
 app.use('/api/expediente-medico', expedienteMedicoRouter);
 app.use('/api/tratamiento', tratamientoRouter);
+app.use('/api/evaluacion', evaluacionRouter);
 
 app.use(errors());
 app.use(globalErrorHandler);

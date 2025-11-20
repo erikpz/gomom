@@ -1,5 +1,4 @@
 const prisma = require('../config/prisma');
-const pacienteService = require('./paciente-service');
 const { prismaErrorHandler } = require('../utils/error-handling');
 
 const expedienteMedicoService = {
@@ -14,7 +13,27 @@ const expedienteMedicoService = {
     getExpedienteMedicoById: async (id) => {
         try {
             const expedienteMedico = await prisma.expedienteMedico.findUnique({
-                where: { id }
+                where: { id },
+                select: {
+                    id: true,
+                    fecha_creacion: true,
+                    diagnostico: true,
+                    paciente: {
+                        select: {
+                            id: true,
+                            nombre: true,
+                            apellido: true,
+                        },
+                    },
+                    tratamientos: {
+                        select: {
+                            id: true,
+                            tipo_tratamiento: true,
+                            fecha_inicio: true,
+                            fecha_fin: true,
+                        }
+                    }
+                }
             });
 
             if (!expedienteMedico) {
@@ -37,16 +56,11 @@ const expedienteMedicoService = {
                         { id: id_paciente }
                     ],
                 },
-                include: {
-                    expedientesMedicos: {
-                        include: {
-                            tratamientos: {
-                                include: {
-                                    evaluaciones: true
-                                }
-                            }
-                        }
-                    }
+                select: {
+                    id: true,
+                    nombre: true,
+                    apellido: true,
+                    expedientesMedicos: true
                 }
             });
 
