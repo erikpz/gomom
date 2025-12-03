@@ -6,7 +6,7 @@ const expedienteMedicoService = {
         try {
             return await prisma.expedienteMedico.findMany();
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -42,7 +42,7 @@ const expedienteMedicoService = {
 
             return expedienteMedico;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -70,7 +70,7 @@ const expedienteMedicoService = {
             
             return pacientes;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -80,7 +80,7 @@ const expedienteMedicoService = {
                 data: expedienteMedicoData
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -91,7 +91,7 @@ const expedienteMedicoService = {
                 data: expedienteMedicoData
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -101,7 +101,7 @@ const expedienteMedicoService = {
                 where: { id }
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     }
 };

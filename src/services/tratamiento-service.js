@@ -6,7 +6,7 @@ const tratamientoService = {
         try {
             return await prisma.tratamiento.findMany();
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -22,7 +22,7 @@ const tratamientoService = {
 
             return tratamiento;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -55,7 +55,7 @@ const tratamientoService = {
             
             return pacientes;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -65,7 +65,7 @@ const tratamientoService = {
                 data: tratamientoData
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -76,7 +76,7 @@ const tratamientoService = {
                 data: tratamientoData
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -86,7 +86,7 @@ const tratamientoService = {
                 where: { id }
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     }
 };

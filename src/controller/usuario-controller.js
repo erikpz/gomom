@@ -39,14 +39,14 @@ const usuarioController = {
             const userData = req.body;
             const salt = await bcrypt.genSalt(10);
             const hashed = await bcrypt.hash(userData.contrasena, salt);
-            const { nombre, apellido, correo, telefono, rol } = userData;
+            const { nombre, apellido, correo, telefono, role } = userData;
             const { contrasena, ...user } = await usuarioService.createUser({
                 correo,
                 contrasena: hashed,
                 nombre,
                 apellido,
                 telefono,
-                role: rol
+                role
             });
 
             return res.status(201).json(user);

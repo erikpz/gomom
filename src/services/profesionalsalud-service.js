@@ -6,7 +6,7 @@ const profesionalSaludService = {
         try {
             return await prisma.profesionalSalud.findMany();
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -22,7 +22,7 @@ const profesionalSaludService = {
 
             return profesionalSalud;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -43,7 +43,7 @@ const profesionalSaludService = {
             }
             return profesionalesSalud;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -53,7 +53,7 @@ const profesionalSaludService = {
                 data: profesionalSaludData
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -64,7 +64,7 @@ const profesionalSaludService = {
                 data: profesionalSaludData
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -74,7 +74,7 @@ const profesionalSaludService = {
                 where: { id }
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     }
 };

@@ -6,7 +6,7 @@ const evaluacionService = {
         try {
             return await prisma.evaluacionTratamiento.findMany();
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -22,7 +22,7 @@ const evaluacionService = {
 
             return evaluacion;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -32,7 +32,7 @@ const evaluacionService = {
                 data: evaluacionData
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -43,7 +43,7 @@ const evaluacionService = {
                 data: evaluacionData
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -53,7 +53,7 @@ const evaluacionService = {
                 where: { id }
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     }
 };

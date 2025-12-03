@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const pacienteRouter = require('./src/routes/paciente-router');
 const profesionalSaludRouter = require('./src/routes/profesionalsalud-router');
 const citaMedicaRouter = require('./src/routes/citamedica-router');
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 3009;
 
 dotenv.config();
 app.use(express.json());
+app.use(cors());
 
 app.get('/', async (req, res) => {
   res.send('¡Hola Gomom!');

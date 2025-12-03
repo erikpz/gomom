@@ -6,7 +6,7 @@ const pacienteService = {
         try {
             return await prisma.paciente.findMany();
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -22,7 +22,7 @@ const pacienteService = {
 
             return paciente;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -47,7 +47,7 @@ const pacienteService = {
             
             return pacientes;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -57,7 +57,7 @@ const pacienteService = {
                 data: pacienteData
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -68,7 +68,7 @@ const pacienteService = {
                 data: pacienteData
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -78,7 +78,7 @@ const pacienteService = {
                 where: { id }
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     }
 };

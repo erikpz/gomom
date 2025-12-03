@@ -15,7 +15,7 @@ const userService = {
                 }
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -31,7 +31,7 @@ const userService = {
 
             return user;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -47,7 +47,7 @@ const userService = {
 
             return user;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -59,7 +59,7 @@ const userService = {
             const { contrasena, ...userWithoutPassword } = user;
             return userWithoutPassword;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -72,7 +72,7 @@ const userService = {
             const { contrasena, ...userWithoutPassword } = user;
             return userWithoutPassword;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -84,7 +84,7 @@ const userService = {
             const { contrasena, ...userWithoutPassword } = user;
             return userWithoutPassword;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     }
 };

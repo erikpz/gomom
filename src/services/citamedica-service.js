@@ -6,7 +6,7 @@ const citaMedicaService = {
         try {
             return await prisma.citaMedica.findMany();
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -22,7 +22,7 @@ const citaMedicaService = {
 
             return citaMedica;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -51,7 +51,7 @@ const citaMedicaService = {
 
             return pacientes;
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -61,7 +61,7 @@ const citaMedicaService = {
                 data: citaMedicaData
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -72,7 +72,7 @@ const citaMedicaService = {
                 data: citaMedicaData
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     },
 
@@ -82,7 +82,7 @@ const citaMedicaService = {
                 where: { id }
             });
         } catch (error) {
-            prismaErrorHandler(error);
+            throw prismaErrorHandler(error);
         }
     }
 };
